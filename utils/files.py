@@ -20,13 +20,7 @@ def delete_files_in_folder(path: Path):
                 item.unlink()
 
 
-def clear_all(dir_path: Path, ex_path):
-    for item in dir_path.iterdir():
-        if item not in ex_path:
-            if item.is_dir():
-                shutil.rmtree(item, ignore_errors=True)
-            elif item.is_file():
-                item.unlink()
+w
 
 
 def make_folder(fpath: Path):
@@ -41,9 +35,10 @@ def append_label_save_pkl(X, y, fpath):
         output = pd.concat([X, y], axis=1)
     else:
         output = X
-        
+
     with open(fpath, 'wb') as f:
         pickle.dump(output, f)
+
 
 def load_params(path='params.yaml'):
     with open(Path(path)) as config_file:
@@ -75,5 +70,3 @@ def load_X_y(path: Path, params):
         y = None
 
     return X, y
-
-
